@@ -23,4 +23,29 @@ PowerGlitch.glitch('.glitch', {
     hideOverflow: true
 })
 
+// last error date
+
+$("[data-lastErrorDate]").each(function() {
+    // get date from data-lastErrorDate
+    var errorDate = $(this).attr("data-lastErrorDate")
+    // turn date into dayjs object
+    errorDate = dayjs(errorDate)
+    // get today's date as a dayjs object
+    var today = dayjs()
+    // find difference in days between the dates
+    var diff = today.diff(errorDate, "day")
+    
+    // determine text color class
+    var textClass
+    if (diff < 5) {
+        textClass = "text-danger"
+    } else if (diff < 30) {
+        textClass = "text-warning"
+    } else {
+        textClass = "text-success"
+    }
+    
+    $(this).text(diff + " days since last error").addClass(textClass)
+})
+
 });
