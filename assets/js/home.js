@@ -48,4 +48,11 @@ $("[data-lastErrorDate]").each(function() {
     $(this).text(diff + " days since last error").addClass(textClass)
 })
 
+// Listen for submit events on the signup form
+    // event.preventDefault()
+    // get .value out of the #email input
+    // create a user using jsonplaceholder API
+        // if successful
+            // redirect to signup-thankyou.html?email=<email_here>
+
 });
