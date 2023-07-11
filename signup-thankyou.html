@@ -16,7 +16,7 @@
 <body class="bg-dark text-white">
   
   <main class="container">
-    <div class="card bg-translucent border-success text-center text-light mt-5 p-3">
+    <div class="card bg-transparent border-success text-center text-light mt-5 p-3">
       <h1 class="card-title">Thanks for signing up!</h1>
       <h6 class="card-subtitle mb-2">We sent an email to <a id="email"></a></h6>
       <p class="card-text">Please check your inbox to verify your account.</p>
@@ -26,9 +26,21 @@
 
 <!-- Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <!-- Custom JS -->
   <script>
-    // get email addrerss out of query parameter
+    // get email address out of query parameter
+    var params = new URLSearchParams(window.location.search)
+    var email = params.get("email")
+    if (email) {
+        console.log(email)
+        var emailAnchor = document.getElementById("email")
+        emailAnchor.href = "mailto:" + email
+        emailAnchor.innerText = email
+
+    }
+    console.log(params)
         // display in #email anchor tag above
+
   </script>
 </body>
 </html>

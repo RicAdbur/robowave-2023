@@ -49,10 +49,37 @@ $("[data-lastErrorDate]").each(function() {
 })
 
 // Listen for submit events on the signup form
-    // event.preventDefault()
+var $contactBtn = $("#contact").find(".btn")
+$contactBtn.click(function(event) {
+    event.preventDefault()
     // get .value out of the #email input
-    // create a user using jsonplaceholder API
-        // if successful
-            // redirect to signup-thankyou.html?email=<email_here>
+    var $contactInput = $("#contact").find("#email")
+    var inputValue = $contactInput.val().trim()
+    console.log(inputValue)
+    // create a user using jsonplaceholder API POST
+    fetch('https://jsonplaceholder.typicode.com/users', {
+        method: "POST",
+        headers: {
+    'Content-type': 'application/json'
+    },
+    body: JSON.stringify({ email: inputValue })
+    })
+        .then(function(response) {
+            console.log(response)
+            // if successful
+            if (response.ok && response.status === 201) {
+                // redirect to signup-thankyou.html?email=<email_here>
+                window.location.assign("./signup-thankyou.html?email="+inputValue)
+            } else {
+                console.log("Something went wrong")
+            }
+        })
+        .catch(function(error) {
+            alert("Error creating user")
+            console.log(error)
+        })
+
+})
+
 
 });
