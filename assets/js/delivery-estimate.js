@@ -26,7 +26,7 @@ var factoryCoordinates = {
     })
     .then(function(distanceData) {
         // once we have mileage
-        var distance = distanceData.rows[0].elements[0].distance.value
+        var distance = parseFloat(distanceData.rows[0].elements[0].distance.text.split(" ")[0])
         // calculate shipping
         var total = calculateShipping(distance)
         console.log(total)
