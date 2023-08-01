@@ -19,7 +19,7 @@ var factoryCoordinates = {
     var userLon = position.coords.longitude
     
     // get distance using distancematrix API
-    fetch('https://api.distancematrix.ai/maps/api/distancematrix/json?origins=' + factoryCoordinates.lat + ',' + factoryCoordinates.lon + '&destinations=' + userLat + ',' + userLon + '&key=FfjlQNSycwguu8hTigfcqloxlIRYU')
+    fetch('https://api.distancematrix.ai/maps/api/distancematrix/json?origins=' + factoryCoordinates.lat + ',' + factoryCoordinates.lon + '&destinations=' + userLat + ',' + userLon + '&key=FfjlQNSycwguu8hTigfcqloxlIRYU') // needs updated API key
     .then(function(response) {
         return response.json()
         
